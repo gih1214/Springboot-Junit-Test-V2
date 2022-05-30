@@ -49,7 +49,7 @@ public class BookRepositoryTest {
         // given - 이전 데이터를 가짜로 만듦
         String title = "스프링부트 1강";
         String author = "최주호";
-        Book book = new Book(title, author); // 비영속화
+        Book book = Book.builder().title(title).author(author).build(); // 비영속화
 
         // when - 테스트 진행
         Book bookEntity = bookRepository.save(book); // 영속화
@@ -67,7 +67,7 @@ public class BookRepositoryTest {
         // given
         String title = "스프링부트 1강";
         String author = "최주호";
-        Book book = new Book(title, author); // 비영속화
+        Book book = Book.builder().title(title).author(author).build(); // 비영속화
         bookRepository.save(book); // 영속화
 
         Long id = 1L;

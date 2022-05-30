@@ -5,8 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+@EqualsAndHashCode // 주소 비교 안 하고 값만 비교함.
 @Getter
 @Entity // value object라고도 함. 디비랑 통신
 public class Book {
@@ -19,8 +22,9 @@ public class Book {
 
     private String author;
 
-    // @Builder // 생성자의 단점 : 순서에 맞게 넣어야 됨 -> builder는 순서 상관없음!
-    public Book(String title, String author) { // id를 뺀 생성자 만듦
+    @Builder
+    public Book(Long id, String title, String author) {
+        this.id = id;
         this.title = title;
         this.author = author;
     }
